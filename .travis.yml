@@ -2,11 +2,18 @@ language: node_js
 arch:
   - amd64
   - ppc64le
+addons:
+  apt:
+    update: true
+    packages: phantomjs
+
 # Removing 0.10 and testing with latest versions
 node_js:
-  - 14
+  - 12
   - node
   - lts/*
+before_install:
+  - export QT_QPA_PLATFORM=offscreen # required for phantomjs
 before_script:
   - 'npm install -g grunt-cli'
   - 'npm install -g bower'

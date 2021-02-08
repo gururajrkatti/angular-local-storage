@@ -13,7 +13,9 @@ node_js:
   - node
   - lts/*
 before_install:
-  - export QT_QPA_PLATFORM=offscreen # required for phantomjs
+  - if [[ "$TRAVIS_CPU_ARCH" = "ppc64le" ]]; then export QT_QPA_PLATFORM=offscreen # required for phantomjs; fi
+install:
+  -  'npm install --save --legacy-peer-deps'
 before_script:
   - 'npm install -g grunt-cli'
   - 'npm install -g bower'
